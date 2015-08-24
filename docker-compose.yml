@@ -1,0 +1,25 @@
+db:
+  image: mysql:latest
+  ports:
+    - "3306:3306"
+  environment:
+    MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+  volumes:
+    - .:/app
+    - /var/run/mysqld/mysqld.sock:/app/temp/mysqld.sock
+server:
+  build: .
+  command: bundle exec ruby app/server.rb -i 0.0.0.0 -p 8080
+  links:
+    - db
+  ports:
+    - "8080:8080"
+  volumes:
+    - .:/app
+middleman:
+  build: .
+  command: bundle exec middleman -p 80
+  ports:
+    - "80:80"
+  volumes:
+    - .:/app
