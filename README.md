@@ -1,5 +1,5 @@
 # sheduler-server
-Server-client aplication with web interface for schedule tasks. <br>
+Server-client application with web interface for tasks scheduling. <br>
 Client app https://github.com/Mordorreal/sheduler-client<br>
 
 1.0 Install Docker and docker-compose<br>
